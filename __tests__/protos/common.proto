@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package petstore;
+
+enum Kind {
+  CAT = 0;
+  DOG = 1;
+  FISH = 2;
+  RABBIT = 3;
+}
+
+enum Sex {
+  MALE = 0;
+  FEMALE = 1;
+}
+
+message Pet {
+  uint32 id = 1; // unique identifier
+  Kind kind = 2;
+  string name = 3;
+  uint32 age = 4;
+  Sex sex = 5;
+}
+
+message Empty {}
+
+message IntegerRes {
+  uint32 ok = 1;
+}

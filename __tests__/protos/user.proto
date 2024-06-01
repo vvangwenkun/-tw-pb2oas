@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package petstore;
+
+import "common.proto";
+import "internal/model.proto";
+
+service UserMgnt {
+  rpc adoptPet(AdoptPetReq) returns (IntegerRes);
+
+  rpc getPets(GetPetsReq) returns (GetPetsRes);
+
+  rpc getPetOwner(GetPetOwnerReq) returns (GetPetOwnerRes);
+}
+
+message AdoptPetReq {
+  uint32 petId = 1;
+  uint32 userId = 2;
+}
+
+message GetPetsReq {
+  uint32 userId = 1;
+}
+
+message GetPetsRes {
+  repeated Pet pets = 1;
+}
+
+message GetPetOwnerReq {
+  uint32 petId = 1;
+}
+
+message GetPetOwnerRes {
+  internal.User user = 1;
+}

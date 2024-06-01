@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package petstore;
+
+import "common.proto";
+
+// pet store
+service PetMgnt {
+  // add pet
+  rpc addPet (AddPetReq) returns (Pet);
+
+  // list pets
+  rpc listPets (ListPetsReq) returns (ListPetsRes);
+
+  // get pet details
+  rpc getPet (GetPetReq) returns (Pet);
+
+  // update pet
+  rpc updatePet (UpdatePetReq) returns (Pet);
+  
+  // remove pet
+  rpc deletePet(DeletePetReq) returns (IntegerRes);
+}
+
+message AddPetReq {
+  Kind kind = 1;
+  string name = 2;
+  uint32 age = 3;
+  Sex sex = 4;
+}
+
+message ListPetsReq {
+  Kind kind = 1;
+  uint32 page = 2 [default=1];
+  uint32 size = 3 [default=100];
+  optional Sex sex = 4;
+}
+
+message ListPetsRes {
+  uint32 page = 1;
+  uint32 size = 2;
+  uint32 total = 3;
+  repeated Pet pets = 4;
+}
+
+message GetPetReq {
+  uint32 id = 1;
+}
+
+message UpdatePetReq {
+  uint32 id = 1;
+  optional string name = 2;
+  optional uint32 age = 3;
+}
+
+message DeletePetReq {
+  uint32 id = 1;
+}

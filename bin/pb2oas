@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const proto2oas = require(path.join(__dirname, '..', 'index'));
+
+const { version } = require(path.join(__dirname, '..', 'package.json'));
+
+const args = process.argv.slice(2);
+
+if (args[0] === '-h' || args[0] === '--help') {
+  console.log('Usage: proto2oas .proto\n\n\
+Options:\n\
+  -h, --help           print proto2oas command line options\n\
+  -v, --version        print proto2oas version\n\
+      --filename       output filename\n\
+      --title          title of the API Specification\n\
+      --url            a URL to the target server\n\
+      --description    a short description of the server\n');
+} else if (args[0] === '-v' || args[0] === '--version') {
+  console.log(version);
+} else {
+  const options = {
+    title: 'Open API Specification',
+    servers: [
+      {
+        url: "http://localhost:8080",
+        description: 'Local Server',
+      },
+    ],
+  };
+
+  let filename = './server.json';
+
+  for (let i = 1; i < args.length; i += 2) {
+    switch (args[i]) {
+      case '--filename':
+        if (args[i + 1]) filename = args[i + 1];
+        break;
+      case '--title':
+        if (args[i + 1]) options.title = args[i + 1];
+        break;
+      case '--url':
+        if (args[i + 1]) options.servers[0].url = args[i + 1];
+        break;
+      case '--description':
+        if (args[i + 1]) options.servers[0].description = args[i + 1];
+        break;
+    }
+  }
+
+  fs.writeFileSync(filename, JSON.stringify(proto2oas(args[0], options), null, 2));
+}

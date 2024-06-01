@@ -1,0 +1,561 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "PetStore Service APIS",
+        "description": "Some description of server.",
+        "termsOfService": "",
+        "contact": {
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "externalDocs": {
+        "description": "",
+        "url": ""
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/api-explorer",
+            "description": "Local Server"
+        }
+    ],
+    "tags": [
+        {
+            "name": "petstore.PetMgnt",
+            "description": "pet store",
+            "externalDocs": {
+                "description": "",
+                "url": ""
+            }
+        },
+        {
+            "name": "petstore.UserMgnt",
+            "description": "",
+            "externalDocs": {
+                "description": "",
+                "url": ""
+            }
+        }
+    ],
+    "paths": {
+        "/petstore.PetMgnt/addPet": {
+            "post": {
+                "tags": [
+                    "petstore.PetMgnt"
+                ],
+                "summary": "add pet",
+                "operationId": "petstore.PetMgnt.addPet",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.AddPetReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.Pet"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.PetMgnt/listPets": {
+            "post": {
+                "tags": [
+                    "petstore.PetMgnt"
+                ],
+                "summary": "list pets",
+                "operationId": "petstore.PetMgnt.listPets",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.ListPetsReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.ListPetsRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.PetMgnt/getPet": {
+            "post": {
+                "tags": [
+                    "petstore.PetMgnt"
+                ],
+                "summary": "get pet details",
+                "operationId": "petstore.PetMgnt.getPet",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.GetPetReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.Pet"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.PetMgnt/updatePet": {
+            "post": {
+                "tags": [
+                    "petstore.PetMgnt"
+                ],
+                "summary": "update pet",
+                "operationId": "petstore.PetMgnt.updatePet",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.UpdatePetReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.Pet"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.PetMgnt/deletePet": {
+            "post": {
+                "tags": [
+                    "petstore.PetMgnt"
+                ],
+                "summary": "remove pet",
+                "operationId": "petstore.PetMgnt.deletePet",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.DeletePetReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.IntegerRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.UserMgnt/adoptPet": {
+            "post": {
+                "tags": [
+                    "petstore.UserMgnt"
+                ],
+                "summary": "",
+                "operationId": "petstore.UserMgnt.adoptPet",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.AdoptPetReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.IntegerRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/UserMgnt/pets": {
+            "get": {
+                "tags": [
+                    "petstore.UserMgnt"
+                ],
+                "summary": "",
+                "operationId": "petstore.UserMgnt.getPets",
+                "parameters": [
+                    {
+                        "name": "GetPetsReq",
+                        "in": "query",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/components/schemas/petstore.GetPetsReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.GetPetsRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/petstore.UserMgnt/getPetOwner": {
+            "post": {
+                "tags": [
+                    "petstore.UserMgnt"
+                ],
+                "summary": "",
+                "operationId": "petstore.UserMgnt.getPetOwner",
+                "requestBody": {
+                    "description": "",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/petstore.GetPetOwnerReq"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/petstore.GetPetOwnerRes"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "petstore.Kind": {
+                "type": "integer",
+                "format": "int64",
+                "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                ],
+                "description": "definitions\n  * `0` - CAT, \n * `1` - DOG, \n * `2` - FISH, \n * `3` - RABBIT, "
+            },
+            "petstore.Sex": {
+                "type": "integer",
+                "format": "int64",
+                "enum": [
+                    0,
+                    1
+                ],
+                "description": "definitions\n  * `0` - MALE, \n * `1` - FEMALE, "
+            },
+            "petstore.Pet": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "unique identifier"
+                    },
+                    "kind": {
+                        "$ref": "#/components/schemas/petstore.Kind"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "sex": {
+                        "$ref": "#/components/schemas/petstore.Sex"
+                    }
+                }
+            },
+            "petstore.IntegerRes": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "ok": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.AddPetReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/petstore.Kind"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "sex": {
+                        "$ref": "#/components/schemas/petstore.Sex"
+                    }
+                }
+            },
+            "petstore.ListPetsReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "kind": {
+                        "$ref": "#/components/schemas/petstore.Kind"
+                    },
+                    "page": {
+                        "type": "integer",
+                        "format": "int64",
+                        "default": 1,
+                        "description": ""
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64",
+                        "default": 100,
+                        "description": ""
+                    },
+                    "sex": {
+                        "$ref": "#/components/schemas/petstore.Sex"
+                    }
+                }
+            },
+            "petstore.ListPetsRes": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "page": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "size": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "total": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "pets": {
+                        "type": "array",
+                        "description": "",
+                        "items": {
+                            "$ref": "#/components/schemas/petstore.Pet"
+                        }
+                    }
+                }
+            },
+            "petstore.GetPetReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.UpdatePetReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "age": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.DeletePetReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.AdoptPetReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "petId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.GetPetsReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "userId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.GetPetsRes": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "pets": {
+                        "type": "array",
+                        "description": "",
+                        "items": {
+                            "$ref": "#/components/schemas/petstore.Pet"
+                        }
+                    }
+                }
+            },
+            "petstore.GetPetOwnerReq": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "petId": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    }
+                }
+            },
+            "petstore.GetPetOwnerRes": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "user": {
+                        "$ref": "#/components/schemas/internal.User"
+                    }
+                }
+            },
+            "internal.User": {
+                "type": "object",
+                "description": "",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": ""
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "phone": {
+                        "type": "string",
+                        "description": ""
+                    },
+                    "address": {
+                        "type": "string",
+                        "description": ""
+                    }
+                }
+            }
+        }
+    }
+}
